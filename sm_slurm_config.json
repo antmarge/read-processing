@@ -1,0 +1,106 @@
+{
+    "__default__" :
+    {
+        "queue"     : "pritch,normal,owners,hns",
+        "nodes"     : 1,
+        "tasks"     : 1,
+        "memory"    : 5000,
+        "time"      : "45:00",
+        "name"      : "{rule}.{wildcards.sample}",
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.err"
+    },
+
+    "fastqc_raw":
+    {
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.err"
+    },     
+    "cutadapt":
+    {
+        "time"    : "04:00:00"
+    },
+    "mapdamage":
+    {
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.err",
+        "time"    : "01:00:00"
+    },
+    "bwa_aln":
+    {
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.err",
+       "tasks"    : "{params.threads}",
+       "memory" : "20G",
+       "time"     : "15:00:00"
+    },
+    "bwa_sampe":
+    {
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.err",
+       "time"     : "5:00:00",
+       "memory"     : "6000"
+    },
+    "bam_mapped":
+    {
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.err",
+        "tasks" : 8,
+        "time" : "02:00:00"
+    },
+    "sort_rg_bam":
+    {
+        "output"    : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.out",
+        "error"     : "{RUN_DIR}/slurm/{rule}.{wildcards.sample}.trim{wildcards.trim}.err",
+        "time"    : "04:00:00"
+    },
+    "summary_rmdupQ25_reads":
+    {
+        "name"      : "{rule}",
+        "time": "00:20:00",
+        "error": "{RUN_DIR}/slurm/{rule}.out",
+        "output": "{RUN_DIR}/slurm/{rule}.out"
+    },
+    "bam_coverage":
+    {
+        "name"      : "{rule}",
+        "time": "00:20:00",
+        "error": "{RUN_DIR}/slurm/{rule}.out",
+        "output": "{RUN_DIR}/slurm/{rule}.out"
+    },
+    "summary_mapped_reads":
+    {
+        "name"      : "{rule}",
+        "time": "00:20:00",
+        "error": "{RUN_DIR}/slurm/{rule}.out",
+        "output": "{RUN_DIR}/slurm/{rule}.out"
+    },
+    "mapdamage_summary":
+    {
+        "name"      : "{rule}",
+        "time": "20:00:00",
+        "error": "{RUN_DIR}/slurm/{rule}.out",
+        "output": "{RUN_DIR}/slurm/{rule}.out"
+    },
+    "do_summary":
+    {
+        "name"      : "{rule}",
+        "time": "20:00:00",
+        "error": "{RUN_DIR}/slurm/{rule}.out",
+        "output": "{RUN_DIR}/slurm/{rule}.out"
+    },
+    "header_bam_trim":
+    {
+        "time"    : "01:00:00"
+    },
+
+    "bam_filter":
+    {
+        "time"    : "02:00:00"
+    },
+    
+    "call_pseudo_variants":
+    {
+       "time"    : "02:00:00"
+    }
+}
