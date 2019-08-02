@@ -1,5 +1,4 @@
-# Read processing and read-based analyses
-# for low-coverage data
+# Read processing and read-based analyses for low-coverage data
 
 ## Margaret Antonio 2019.07.17
 
